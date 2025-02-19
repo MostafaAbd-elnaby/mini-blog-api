@@ -24,6 +24,6 @@ class PostController extends Controller
 
     public function show($id)
     {
-        return $this->postService->show($id);
+        return response()->json(['data' => $this->postService->show($id)], 200);
     }
 }
