@@ -16,10 +16,10 @@ Route::prefix('auth')->controller(LoginController::class)->group(function () {
 Route::prefix('posts')->controller(PostController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/{id}', 'show');
-    Route::post('/', 'store');
+    Route::post('/', 'store')->middleware('auth:jwt');
 
     Route::prefix('{id}/comments')->controller(CommentController::class)->group(function () {
         Route::get('/', 'index');
-        Route::post('/', 'store');
+        Route::post('/', 'store')->middleware('auth:jwt');;
     });
 });

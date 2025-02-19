@@ -11,14 +11,14 @@ class CommentController extends Controller
     public function __construct(private readonly CommentService $commentService)
     {}
 
-    public function index($postId)
+    public function index($id)
     {
-        return response()->json(['data' => $this->commentService->index($postId)], 200);
+        return response()->json(['data' => $this->commentService->index($id)], 200);
     }
 
-    public function store(CommentRequest $request, $postId)
+    public function store(CommentRequest $request, $id)
     {
-        $this->commentService->store($request->validated(), $postId);
+        $this->commentService->store($request->validated(), $id);
         return response()->json(['message' => 'Comment created successfully'], 201);
     }
 }
